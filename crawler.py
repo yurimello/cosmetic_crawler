@@ -32,6 +32,14 @@ def crawl():
             product['url'] = product_anchor['href']
             price = product_item.find(class_='newPrice').get_text().split(" ")[1]
             product['price'] = price
+            found = 0
+            for p in products:
+                if product['name'] == p['name']:
+                    found = 0
+                    break
+            if found > 0:
+                found = 0
+                next
             products.append(product)
     # print(products)
     file = open('products.csv', 'w')
